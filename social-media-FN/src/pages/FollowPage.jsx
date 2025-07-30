@@ -8,7 +8,7 @@ const FollowPage = ({ currentUserId }) => {
   const [following, setFollowing] = useState([]);
   const [pendingRequests, setPendingRequests] = useState([]);
   const token = localStorage.getItem('token');
-  const socket = io('http://localhost:8000');
+  const socket = io('https://main-tasks-backend.onrender.com');
 
   useEffect(() => {
     fetchUsers();

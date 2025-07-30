@@ -85,7 +85,7 @@ useEffect(() => {
   useEffect(() => {
     if (user) {
       setForm({ name: user.name, bio: user.bio || "", isPrivate: user.isPrivate || false });
-      setPreview(user.avatar ? `http://localhost:8000${user.avatar}` : null);
+      setPreview(user.avatar ? `https://main-tasks-backend.onrender.com${user.avatar}` : null);
     }
   }, [user]);
 
@@ -155,7 +155,7 @@ useEffect(() => {
 
   const handleCancelEdit = () => {
     setForm({ name: user.name, bio: user.bio || "" });
-    setPreview(user.avatar ? `http://localhost:8000${user.avatar}` : null);
+    setPreview(user.avatar ? `https://main-tasks-backend.onrender.com${user.avatar}` : null);
     setAvatarFile(null);
     setIsEditing(false);
   };
@@ -306,7 +306,7 @@ const fetchFollowList = async (type) => {
         {followingList.map(user => (
           <div key={user._id} className="cursor-pointer flex items-center gap-4 p-3 bg-gray-100 rounded hover:bg-gray-200" onClick={() => navigate(`/user/${user._id}`)}>
             {user.avatar ? (
-              <img src={`http://localhost:8000${user.avatar}`} className="w-10 h-10 rounded-full object-cover" alt={user.name} />
+              <img src={`https://main-tasks-backend.onrender.com${user.avatar}`} className="w-10 h-10 rounded-full object-cover" alt={user.name} />
             ) : (
               <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold" style={{ backgroundColor: getAvatarColor(user.name) }}>
                 {getInitials(user.name)}
@@ -326,7 +326,7 @@ const fetchFollowList = async (type) => {
         {followerList.map(user => (
           <div key={user._id} className="cursor-pointer flex items-center gap-4 p-3 bg-gray-100 rounded hover:bg-gray-200" onClick={() => navigate(`/user/${user._id}`)}>
             {user.avatar ? (
-              <img src={`http://localhost:8000${user.avatar}`} className="w-10 h-10 rounded-full object-cover" alt={user.name} />
+              <img src={`https://main-tasks-backend.onrender.com${user.avatar}`} className="w-10 h-10 rounded-full object-cover" alt={user.name} />
             ) : (
               <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold" style={{ backgroundColor: getAvatarColor(user.name) }}>
                 {getInitials(user.name)}

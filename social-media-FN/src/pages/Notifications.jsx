@@ -12,7 +12,7 @@ const Notifications = () => {
   // ✅ Hoisted to use in both useEffect and button
   const cleanupOldSeenNotifications = async () => {
     try {
-      await axios.delete("http://localhost:8000/api/notifications/cleanup", {
+      await axios.delete("https://main-tasks-backend.onrender.com/api/notifications/cleanup", {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
 
@@ -35,7 +35,7 @@ const Notifications = () => {
     const fetchNotifications = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("http://localhost:8000/api/notifications", {
+        const res = await axios.get("https://main-tasks-backend.onrender.com/api/notifications", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setNotifications(res.data);
@@ -50,7 +50,7 @@ const Notifications = () => {
 
   const handleSeen = async (id, userId) => {
     try {
-      await fetch(`http://localhost:8000/api/notifications/seen/${id}`, {
+      await fetch(`https://main-tasks-backend.onrender.com/api/notifications/seen/${id}`, {
         method: "POST",
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
@@ -89,7 +89,7 @@ const Notifications = () => {
               <div className="flex items-center gap-3">
                 {n?.from?.avatar ? (
                   <img
-                    src={`http://localhost:8000${n.from.avatar}`}
+                    src={`https://main-tasks-backend.onrender.com${n.from.avatar}`}
                     alt="avatar"
                     className="w-10 h-10 rounded-full"
                   />

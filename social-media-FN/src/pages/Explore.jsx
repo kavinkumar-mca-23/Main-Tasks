@@ -148,7 +148,7 @@ const Explore = () => {
               <div className="flex items-center mb-4">
                 {selectedPost.user?.avatar ? (
                   <img
-                    src={`http://localhost:8000${selectedPost.user.avatar}`}
+                    src={`https://main-tasks-backend.onrender.com${selectedPost.user.avatar}`}
                     className="w-10 h-10 rounded-full object-cover mr-3"
                     alt="Avatar"
                   />

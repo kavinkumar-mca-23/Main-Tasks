@@ -21,7 +21,7 @@ const UserSearch = ({ onUserSelect }) => {
   useEffect(() => {
     const fetchRecent = async () => {
       try {
-        const res = await axios.get('http://localhost:8000/api/users/recent', {
+        const res = await axios.get('https://main-tasks-backend.onrender.com/api/users/recent', {
           headers: { Authorization: `Bearer ${token}` }
         });
         setRecentChats(res.data);
@@ -43,7 +43,7 @@ const UserSearch = ({ onUserSelect }) => {
 
     try {
       const res = await axios.get(
-        `http://localhost:8000/api/users/search?name=${value}`,
+        `https://main-tasks-backend.onrender.com/api/users/search?name=${value}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setResults(res.data);
@@ -68,7 +68,7 @@ const UserSearch = ({ onUserSelect }) => {
 
     try {
       await axios.post(
-        `http://localhost:8000/api/users/recent/${selectedUser._id}`,
+        `https://main-tasks-backend.onrender.com/api/users/recent/${selectedUser._id}`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -103,12 +103,12 @@ const UserSearch = ({ onUserSelect }) => {
         createdBy: currentUser?.id // ✅ NEW
       };
 
-      const res = await axios.post("http://localhost:8000/api/group", payload, {
+      const res = await axios.post("https://main-tasks-backend.onrender.com/api/group", payload, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
       await axios.post(
-        `http://localhost:8000/api/users/recent/${res.data._id}`,
+        `https://main-tasks-backend.onrender.com/api/users/recent/${res.data._id}`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -235,7 +235,7 @@ const UserSearch = ({ onUserSelect }) => {
             >
               {chat.data.avatar ? (
                 <img
-                  src={`http://localhost:8000${chat.data.avatar}`}
+                  src={`https://main-tasks-backend.onrender.com${chat.data.avatar}`}
                   alt={chat.data.name}
                   className="w-10 h-10 rounded-full object-cover border border-gray-300"
                 />
@@ -266,7 +266,7 @@ const UserSearch = ({ onUserSelect }) => {
             >
               {user.avatar ? (
                 <img
-                  src={`http://localhost:8000${user.avatar}`}
+                  src={`https://main-tasks-backend.onrender.com${user.avatar}`}
                   alt={user.name}
                   className="w-10 h-10 rounded-full object-cover border border-gray-300"
                 />

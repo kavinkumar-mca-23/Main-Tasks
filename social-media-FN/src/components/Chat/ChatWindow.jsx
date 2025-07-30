@@ -29,7 +29,7 @@ const ChatWindow = ({ user }) => {
   useEffect(() => {
     if (!currentUser?.id) return;
 
-    socketRef.current = io("http://localhost:8000", {
+    socketRef.current = io("https://main-tasks-backend.onrender.com", {
       query: { userId: currentUser.id },
     });
 

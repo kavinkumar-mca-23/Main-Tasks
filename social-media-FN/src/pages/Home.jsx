@@ -74,7 +74,7 @@ setUserPosts(userPostRes.data);
 
       // 👇 Socket connect (AFTER user is fetched)
       if (userId) {
-        socket = io("http://localhost:8000", {
+        socket = io("https://main-tasks-backend.onrender.com", {
           query: { userId },
         });
 
@@ -155,7 +155,7 @@ setUserPosts(userPostRes.data);
             <img
               src={
                 
-                  `http://localhost:8000${user.avatar}`}
+                  `https://main-tasks-backend.onrender.com${user.avatar}`}
                    alt="Profile"
                    className="w-10 h-10 rounded-full object-cover mr-2"
             />
@@ -187,7 +187,7 @@ setUserPosts(userPostRes.data);
     
     {post.user?.avatar ?(  
         <img
-        src={ `http://localhost:8000${post.user.avatar}`}
+        src={ `https://main-tasks-backend.onrender.com${post.user.avatar}`}
         alt="avatar"
         className="w-10 h-10 rounded-full object-cover mr-3"
         />
@@ -300,7 +300,7 @@ setUserPosts(userPostRes.data);
           <div className="flex items-center mb-3 p-4">
             {user?.avatar ? (
               <img
-                src={`http://localhost:8000${user.avatar}`}
+                src={`https://main-tasks-backend.onrender.com${user.avatar}`}
                 alt="avatar"
                 className="w-10 h-10 rounded-full object-cover mr-3"
               />

@@ -48,28 +48,28 @@ const UserProfile = () => {
         const decoded = JSON.parse(atob(token.split(".")[1]));
         setAuthUserId(decoded.id);
 
-        const userRes = await axios.get(`http://localhost:8000/api/auth/${id}`, {
+        const userRes = await axios.get(`https://main-tasks-backend.onrender.com/api/auth/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUser(userRes.data);
 
-        const postRes = await axios.get(`http://localhost:8000/api/posts/user/${id}`, {
+        const postRes = await axios.get(`https://main-tasks-backend.onrender.com/api/posts/user/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUserPosts(postRes.data);
 
         const [followersRes, followingRes] = await Promise.all([
-          axios.get(`http://localhost:8000/api/follow/followers/${id}`, {
+          axios.get(`https://main-tasks-backend.onrender.com/api/follow/followers/${id}`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          axios.get(`http://localhost:8000/api/follow/following/${id}`, {
+          axios.get(`https://main-tasks-backend.onrender.com/api/follow/following/${id}`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
         ]);
         setFollowersCount(followersRes.data.length);
         setFollowingCount(followingRes.data.length);
 
-        const statusRes = await axios.get(`http://localhost:8000/api/follow/status/${id}`, {
+        const statusRes = await axios.get(`https://main-tasks-backend.onrender.com/api/follow/status/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setIsFollowing(statusRes.data.isFollowing);
@@ -108,13 +108,13 @@ const UserProfile = () => {
   });
 
 
-        await axios.post(`http://localhost:8000/api/follow/unfollow/${id}`, {}, {
+        await axios.post(`https://main-tasks-backend.onrender.com/api/follow/unfollow/${id}`, {}, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setIsFollowing(false);
         setFollowersCount(prev => prev - 1);
 
-        const statusRes = await axios.get(`http://localhost:8000/api/follow/status/${id}`, {
+        const statusRes = await axios.get(`https://main-tasks-backend.onrender.com/api/follow/status/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setIsFollowedBy(statusRes.data.isFollowedBy);
@@ -138,13 +138,13 @@ const UserProfile = () => {
 
 
 
-        await axios.post(`http://localhost:8000/api/follow/follow/${id}`, {}, {
+        await axios.post(`https://main-tasks-backend.onrender.com/api/follow/follow/${id}`, {}, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setIsFollowing(true);
         setFollowersCount(prev => prev + 1);
 
-        const statusRes = await axios.get(`http://localhost:8000/api/follow/status/${id}`, {
+        const statusRes = await axios.get(`https://main-tasks-backend.onrender.com/api/follow/status/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setIsFollowedBy(statusRes.data.isFollowedBy);
@@ -159,8 +159,8 @@ const fetchFollowList = async (type) => {
   try {
     const token = localStorage.getItem("token");
     const url = type === "followers"
-      ? `http://localhost:8000/api/follow/followers/${id}`
-      : `http://localhost:8000/api/follow/following/${id}`;
+      ? `https://main-tasks-backend.onrender.com/api/follow/followers/${id}`
+      : `https://main-tasks-backend.onrender.com/api/follow/following/${id}`;
 
     const res = await axios.get(url, {
       headers: { Authorization: `Bearer ${token}` },
@@ -230,7 +230,7 @@ return (
           <div className="relative w-32 h-32">
             {user.avatar ? (
               <img
-                src={`http://localhost:8000${user.avatar}`}
+                src={`https://main-tasks-backend.onrender.com${user.avatar}`}
                 alt="Avatar"
                 className="rounded-full object-cover w-full h-full border-4 border-gray-200"
               />
@@ -277,7 +277,7 @@ return (
             {followerList.map(user => (
               <div key={user._id} className="cursor-pointer flex items-center gap-4 p-3 bg-gray-100 rounded hover:bg-gray-200" onClick={() => navigate(`/user/${user._id}`)}>
                 {user.avatar ? (
-                  <img src={`http://localhost:8000${user.avatar}`} className="w-10 h-10 rounded-full object-cover" alt={user.name} />
+                  <img src={`https://main-tasks-backend.onrender.com${user.avatar}`} className="w-10 h-10 rounded-full object-cover" alt={user.name} />
                 ) : (
                   <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold" style={{ backgroundColor: getAvatarColor(user.name) }}>
                     {getInitials(user.name)}
@@ -299,7 +299,7 @@ return (
             {followingList.map(user => (
               <div key={user._id} className="cursor-pointer flex items-center gap-4 p-3 bg-gray-100 rounded hover:bg-gray-200" onClick={() => navigate(`/user/${user._id}`)}>
                 {user.avatar ? (
-                  <img src={`http://localhost:8000${user.avatar}`} className="w-10 h-10 rounded-full object-cover" alt={user.name} />
+                  <img src={`https://main-tasks-backend.onrender.com${user.avatar}`} className="w-10 h-10 rounded-full object-cover" alt={user.name} />
                 ) : (
                   <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold" style={{ backgroundColor: getAvatarColor(user.name) }}>
                     {getInitials(user.name)}

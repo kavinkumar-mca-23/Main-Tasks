@@ -14,7 +14,7 @@ const SuggestedUsers = () => {
     const fetchSuggestedUsers = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('http://localhost:8000/api/follow/suggested', {
+        const response = await axios.get('https://main-tasks-backend.onrender.com/api/follow/suggested', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -49,7 +49,7 @@ const SuggestedUsers = () => {
             {user.avatar ? (
             <img
              
-            src={`http://localhost:8000${user.avatar}`}
+            src={`https://main-tasks-backend.onrender.com${user.avatar}`}
               alt={user.name}
               style={{
                 width: '40px',

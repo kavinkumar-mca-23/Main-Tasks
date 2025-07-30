@@ -13,7 +13,7 @@ export const NotificationProvider = ({ userId, children }) => {
   // Setup socket connection and receive notifications
   useEffect(() => {
     if (!userId) return;
-    const s = io("http://localhost:8000", {
+    const s = io("https://main-tasks-backend.onrender.com", {
       query: {userId}
     });
     setSocket(s);
@@ -37,7 +37,7 @@ export const NotificationProvider = ({ userId, children }) => {
   // Initial load from DB
   useEffect(() => {
     if (!userId) return;
-    fetch(`http://localhost:8000/api/notifications`, {
+    fetch(`https://main-tasks-backend.onrender.com/api/notifications`, {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     })
       .then(res => res.json())

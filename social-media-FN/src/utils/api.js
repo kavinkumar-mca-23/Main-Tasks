@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:8000/api", // Change to your backend IP/host in production
+  baseURL: "https://main-tasks-backend.onrender.com/api", // Change to your backend IP/host in production
 });
 
 // Set auth token in headers if needed
